@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הזמנה לבר המצווה של יענקי נ"י | משפחת פרום</title>
+    
+    <!-- Google Fonts: Frank Ruhl Libre & Heebo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#F9F5EC',
+                            200: '#F2E9D8',
+                            300: '#E6D6B8',
+                        },
+                        gold: {
+                            300: '#E5CE95',
+                            400: '#D4B672',
+                            500: '#C5A059',
+                            600: '#AE8942',
+                            700: '#997B30',
+                            800: '#785E21',
+                        },
+                        espresso: {
+                            600: '#6B4C35',
+                            700: '#523825',
+                            800: '#3A2618',
+                            900: '#26180E',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Frank Ruhl Libre"', 'serif'],
+                        sans: ['"Heebo"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'regal': '0 20px 50px -12px rgba(58, 38, 24, 0.14), 0 4px 16px -2px rgba(197, 160, 89, 0.18)',
+                        'gold-glow': '0 8px 25px -4px rgba(197, 160, 89, 0.45)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Parchment Texture & Gold Shimmer Effects */
+        body {
+            background-color: #FDFBF7;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(197, 160, 89, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(197, 160, 89, 0.09) 0%, transparent 45%),
+                repeating-linear-gradient(45deg, rgba(197, 160, 89, 0.015) 0px, rgba(197, 160, 89, 0.015) 1px, transparent 1px, transparent 10px);
+            color: #3A2618;
+            overflow-x: hidden;
+        }
+
+        /* Regal Gold Foil Text Gradient */
+        .gold-foil-text {
+            background: linear-gradient(135deg, #785E21 0%, #C5A059 35%, #E8D090 50%, #997B30 70%, #523825 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 6s linear infinite;
+            text-shadow: 0px 4px 18px rgba(197, 160, 89, 0.15);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Luxury Gold Button */
+        .btn-gold {
+            background: linear-gradient(135deg, #B89146 0%, #D2B16C 50%, #997B30 100%);
+            background-size: 200% auto;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .btn-gold:hover:not(:disabled) {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -6px rgba(153, 123, 48, 0.5);
+        }
+        .btn-gold:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        /* Subtle Floating Dust Particles */
+        .gold-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(229, 206, 149, 0.9) 0%, rgba(197, 160, 89, 0) 70%);
+            pointer-events: none;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(20px) scale(0.8);
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.85;
+            }
+            75% {
+                opacity: 0.65;
+            }
+            100% {
+                transform: translateY(-120px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F5EC;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4B672;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold-300/40 selection:text-espresso-900 min-h-screen flex flex-col items-center py-6 px-3 sm:py-12 sm:px-6 relative">
+
+    <!-- Confetti Canvas for Celebratory Submission -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Main Regal Invitation Card Container -->
+    <main class="w-full max-w-2xl bg-cream-50/95 backdrop-blur-sm rounded-[2rem] shadow-regal border border-gold-400/50 relative overflow-hidden">
+        
+        <!-- Inner Double Gold Frame Border -->
+        <div class="m-2.5 sm:m-4 rounded-[1.65rem] border border-gold-500/40 p-1 relative">
+            <div class="rounded-[1.45rem] border border-gold-500/25 px-5 py-8 sm:px-12 sm:py-12 relative overflow-hidden">
+                
+                <!-- Floating Gold Dust Container -->
+                <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+                <!-- Top-Right Botanical Gold Leaf SVG -->
+                <svg class="w-32 h-32 sm:w-44 sm:h-44 absolute -top-2 -right-2 text-gold-500/35 pointer-events-none" viewBox="0 0 200 200" fill="none">
+                    <path d="M190 10 C140 20, 90 60, 40 130" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M165 22 C145 10, 125 18, 120 35 C138 38, 155 32, 165 22 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M135 45 C110 35, 92 48, 90 68 C110 68, 126 58, 135 45 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M102 74 C76 68, 60 84, 62 104 C82 102, 95 90, 102 74 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M175 45 C185 68, 175 88, 158 92 C156 74, 164 56, 175 45 Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M145 78 C152 102, 140 120, 122 122 C122 104, 132 88, 145 78 Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.1"/>
+                </svg>
+
+                <!-- Top-Left Botanical Gold Leaf SVG -->
+                <svg class="w-32 h-32 sm:w-44 sm:h-44 absolute -top-2 -left-2 text-gold-500/35 pointer-events-none transform -scale-x-100" viewBox="0 0 200 200" fill="none">
+                    <path d="M190 10 C140 20, 90 60, 40 130" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M165 22 C145 10, 125 18, 120 35 C138 38, 155 32, 165 22 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M135 45 C110 35, 92 48, 90 68 C110 68, 126 58, 135 45 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M102 74 C76 68, 60 84, 62 104 C82 102, 95 90, 102 74 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M175 45 C185 68, 175 88, 158 92 C156 74, 164 56, 175 45 Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.1"/>
+                    <path d="M145 78 C152 102, 140 120, 122 122 C122 104, 132 88, 145 78 Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.1"/>
+                </svg>
+
+                <!-- HEADER / COMPACT ABOVE-THE-FOLD HERO -->
+                <header class="text-center relative z-10 space-y-2.5">
+                    <div class="text-xs sm:text-sm font-serif font-bold tracking-widest text-gold-700">בס״ד</div>
+
+                    <!-- Compact Tefillin Emblem + Title Row -->
+                    <div class="flex flex-col items-center justify-center gap-1.5">
+                        <div class="w-16 h-12 sm:w-20 sm:h-16 flex items-center justify-center">
+                            <svg viewBox="0 0 160 120" class="w-full h-full drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="tefillinGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#D4B672"/>
+                                        <stop offset="50%" stop-color="#997B30"/>
+                                        <stop offset="100%" stop-color="#523825"/>
+                                    </linearGradient>
+                                    <linearGradient id="boxDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#4A3525"/>
+                                        <stop offset="100%" stop-color="#22150C"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M20 96 C45 106, 65 88, 80 105 C95 88, 115 106, 140 96" stroke="url(#tefillinGold)" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M35 88 C55 95, 70 84, 80 94 C90 84, 105 95, 125 88" stroke="url(#tefillinGold)" stroke-width="1.2" stroke-linecap="round"/>
+                                <polygon points="40,68 72,54 104,68 72,82" fill="url(#boxDark)" stroke="url(#tefillinGold)" stroke-width="1.5"/>
+                                <polygon points="40,68 72,82 72,90 40,76" fill="#2A1B10" stroke="url(#tefillinGold)" stroke-width="1.2"/>
+                                <polygon points="104,68 72,82 72,90 104,76" fill="#1E130B" stroke="url(#tefillinGold)" stroke-width="1.2"/>
+                                <polygon points="52,44 72,35 92,44 72,53" fill="url(#boxDark)" stroke="url(#tefillinGold)" stroke-width="1.5"/>
+                                <polygon points="52,44 72,53 72,73 52,64" fill="#3A2618" stroke="url(#tefillinGold)" stroke-width="1.3"/>
+                                <polygon points="92,44 72,53 72,73 92,64" fill="#24160D" stroke="url(#tefillinGold)" stroke-width="1.3"/>
+                                <text x="82" y="63" fill="#D4B672" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle">ש</text>
+                                <path d="M98 66 C122 58, 134 36, 118 24 C104 14, 88 28, 98 42 C108 54, 136 44, 136 64 C136 80, 110 80, 102 92" stroke="#26180E" stroke-width="5.5" stroke-linecap="round"/>
+                                <path d="M98 66 C122 58, 134 36, 118 24 C104 14, 88 28, 98 42 C108 54, 136 44, 136 64 C136 80, 110 80, 102 92" stroke="url(#tefillinGold)" stroke-width="1" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h1 class="font-serif text-2xl sm:text-4xl font-black tracking-tight gold-foil-text leading-snug">
+                            שמחת בר המצווה של יענקי נ״י
+                        </h1>
+                        <p class="font-serif text-base sm:text-lg font-bold text-espresso-700">
+                            משפחת פרום
+                        </p>
+                    </div>
+
+                    <!-- Quick Mini Date & Venue Pill + Scroll Link -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-espresso-700 pt-0.5">
+                        <span class="bg-cream-100 border border-gold-400/50 rounded-full px-3 py-1 font-medium">
+                            יום א׳, אור לי״ג כסלו תשפ״ז • 20:00
+                        </span>
+                        <a href="#invitation-details" class="text-gold-700 hover:text-espresso-900 font-semibold underline underline-offset-4 px-1.5 py-1 transition">
+                            לפרטי ההזמנה המלאים ↓
+                        </a>
+                    </div>
+                </header>
+
+                <!-- TOP PRIORITY: SILENT BACKGROUND RSVP FORM (ABOVE THE FOLD) -->
+                <section id="rsvp-section" class="mt-4 sm:mt-6 relative z-10">
+                    <form id="rsvp-form" class="space-y-4 bg-white/90 border-2 border-gold-400/60 rounded-2xl p-4 sm:p-7 shadow-md" novalidate>
+                        <div class="text-center space-y-0.5">
+                            <h2 class="font-serif text-xl sm:text-2xl font-bold text-espresso-900">אישור הגעה</h2>
+                            <p class="text-xs sm:text-sm text-espresso-600">
+                                נשמח שתאשרו את השתתפותכם בשמחתנו
+                            </p>
+                        </div>
+
+                        <!-- Inline Validation Alert Box -->
+                        <div id="form-alert" class="hidden bg-red-50 border border-red-200 text-red-800 text-sm rounded-xl px-4 py-2.5 text-center font-medium"></div>
+
+                        <!-- Full Name Input -->
+                        <div>
+                            <label for="guest-name" class="block text-xs sm:text-sm font-semibold text-espresso-800 mb-1">
+                                שם מלא <span class="text-gold-700">*</span>
+                            </label>
+                            <input type="text" 
+                                   id="guest-name" 
+                                   name="name" 
+                                   required
+                                   placeholder="ישראל ישראלי ומשפחתו"
+                                   class="w-full bg-cream-50 border border-gold-400/60 focus:border-gold-600 focus:ring-2 focus:ring-gold-400/30 rounded-xl px-3.5 py-2.5 text-sm sm:text-base text-espresso-900 placeholder-espresso-600/45 outline-none transition">
+                        </div>
+
+                        <!-- Attendance Toggle Pills -->
+                        <div>
+                            <span class="block text-xs sm:text-sm font-semibold text-espresso-800 mb-1.5">האם תגיעו לחגוג איתנו?</span>
+                            <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="attendance" value="מגיעים בשמחה!" class="peer sr-only" checked>
+                                    <div class="p-3 rounded-xl border-2 border-gold-300/70 bg-cream-50 text-center font-semibold text-xs sm:text-base text-espresso-700 peer-checked:border-gold-600 peer-checked:bg-gold-500/15 peer-checked:text-espresso-900 transition flex items-center justify-center gap-1.5">
+                                        <span>מגיעים בשמחה!</span>
+                                        <span>🎉</span>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="attendance" value="לצערי לא אוכל להגיע" class="peer sr-only">
+                                    <div class="p-3 rounded-xl border-2 border-gold-300/70 bg-cream-50 text-center font-semibold text-xs sm:text-base text-espresso-700 peer-checked:border-espresso-600 peer-checked:bg-espresso-800/10 peer-checked:text-espresso-900 transition flex items-center justify-center gap-1.5">
+                                        <span>לצערי לא אוכל להגיע</span>
+                                        <span>🙏</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Number of Guests Stepper (Hidden when not attending) -->
+                        <div id="guests-count-wrapper" class="transition-all duration-300">
+                            <div class="flex items-center justify-between bg-cream-50 border border-gold-400/60 rounded-xl px-4 py-2">
+                                <span class="text-xs sm:text-sm font-semibold text-espresso-800">מספר משתתפים (כולל אותך):</span>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" 
+                                            id="decrease-guests" 
+                                            aria-label="הפחת משתתף"
+                                            class="w-9 h-9 rounded-xl bg-white hover:bg-gold-300/30 border border-gold-400/50 text-espresso-900 font-bold text-lg flex items-center justify-center transition cursor-pointer select-none">
+                                        −
+                                    </button>
+                                    <span id="guests-display" class="font-serif text-xl sm:text-2xl font-bold text-espresso-900 min-w-[1.5rem] text-center">1</span>
+                                    <button type="button" 
+                                            id="increase-guests" 
+                                            aria-label="הוסף משתתף"
+                                            class="w-9 h-9 rounded-xl bg-white hover:bg-gold-300/30 border border-gold-400/50 text-espresso-900 font-bold text-lg flex items-center justify-center transition cursor-pointer select-none">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" 
+                                id="submit-rsvp-btn"
+                                class="w-full btn-gold text-white font-bold text-base sm:text-lg py-3.5 px-6 rounded-xl shadow-gold-glow flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
+                            <!-- Default Icon & Text -->
+                            <span id="submit-btn-content" class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>אישור הגעה</span>
+                            </span>
+                            <!-- Loading Spinner -->
+                            <span id="submit-btn-loader" class="hidden flex items-center justify-center gap-2.5">
+                                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span>מעדכן את הפרטים...</span>
+                            </span>
+                        </button>
+                    </form>
+
+                    <!-- Luxury Confirmation Screen (Shown after silent submission) -->
+                    <div id="confirmation-card" class="hidden bg-cream-100 border-2 border-gold-500/60 rounded-2xl p-6 sm:p-9 text-center space-y-4 shadow-md">
+                        <div class="w-16 h-16 bg-gold-500/20 text-gold-700 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-espresso-900">
+                            תודה רבה, <span id="confirm-guest-name" class="text-gold-700"></span>!
+                        </h3>
+                        <p id="confirm-message-text" class="text-base text-espresso-700 leading-relaxed max-w-md mx-auto">
+                            אישור ההגעה נקלט בהצלחה, נשמח לראותכם בשמחתנו!
+                        </p>
+                        <div id="confirm-summary-badge" class="inline-block bg-white/90 border border-gold-400/50 rounded-xl px-4 py-2 text-xs sm:text-sm text-espresso-800 font-semibold shadow-sm"></div>
+                    </div>
+                </section>
+
+                <!-- Ornate Divider Before Full Invitation Details -->
+                <div id="invitation-details" class="flex items-center justify-center gap-3 my-8 sm:my-10 relative z-10 scroll-mt-6">
+                    <span class="h-[1px] flex-1 bg-gradient-to-l from-gold-500/70 to-transparent"></span>
+                    <svg class="w-5 h-5 text-gold-600" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/>
+                    </svg>
+                    <span class="font-serif text-lg sm:text-xl font-bold text-espresso-800 px-1">ההזמנה לשמחה</span>
+                    <svg class="w-5 h-5 text-gold-600" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/>
+                    </svg>
+                    <span class="h-[1px] flex-1 bg-gradient-to-r from-gold-500/70 to-transparent"></span>
+                </div>
+
+                <!-- FULL INVITATION DETAILS CARD -->
+                <section class="relative z-10 reveal">
+                    <div class="bg-cream-100/95 border border-gold-400/50 rounded-2xl p-6 sm:p-9 text-center shadow-inner space-y-5">
+                        
+                        <!-- Full Invitation Text from Original Card -->
+                        <div class="space-y-1.5 max-w-md mx-auto">
+                            <p class="font-serif text-lg sm:text-xl font-bold text-espresso-700 leading-relaxed">
+                                בשבח והודיה לה׳ יתברך,
+                            </p>
+                            <p class="font-serif text-lg sm:text-xl font-medium text-espresso-800 leading-relaxed">
+                                מתכבדים אנו להזמינכם<br>
+                                לשמחת בר המצווה לבננו היקר
+                            </p>
+                            <div class="py-1.5">
+                                <span class="font-serif text-4xl sm:text-5xl font-black gold-foil-text">
+                                    יענקי נ״י
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="w-24 h-[1px] bg-gold-400/60 mx-auto"></div>
+
+                        <!-- Date & Time -->
+                        <div class="space-y-1">
+                            <p class="text-sm sm:text-base font-medium text-gold-700">שתתקיים אי״ה</p>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-espresso-900">
+                                ביום ראשון, אור לי״ג כסלו תשפ״ז
+                            </h3>
+                            <p class="font-serif text-lg sm:text-xl font-bold text-espresso-800">
+                                בשעה 20:00
+                            </p>
+                            <p class="text-xs sm:text-sm text-espresso-600 font-medium">
+                                (22 בנובמבר 2026)
+                            </p>
+                        </div>
+
+                        <div class="w-24 h-[1px] bg-gold-400/60 mx-auto"></div>
+
+                        <!-- Venue -->
+                        <div class="space-y-1.5">
+                            <div class="inline-flex items-center justify-center gap-1.5 text-gold-700 font-semibold text-sm">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>מיקום האירוע</span>
+                            </div>
+                            <h4 class="font-serif text-xl sm:text-2xl font-bold text-espresso-800">
+                                באולם פני שמואל
+                            </h4>
+                            <p class="text-sm sm:text-base text-espresso-700">
+                                רח׳ נחל לוז 3, רמת בית שמש א׳
+                            </p>
+                        </div>
+
+                        <!-- Quick Navigation & Calendar Action Buttons -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                            <!-- Waze Button -->
+                            <a href="https://waze.com/ul?q=%D7%90%D7%95%D7%9C%D7%9D%20%D7%A4%D7%A0%D7%99%20%D7%A9%D7%9E%D7%95%D7%90%D7%9C%20%D7%A0%D7%97%D7%9C%20%D7%9C%D7%95%D7%96%203%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="flex items-center justify-center gap-2 bg-white hover:bg-cream-200/70 text-espresso-800 border border-gold-400/60 rounded-xl py-2.5 px-3 text-sm font-semibold transition shadow-sm">
+                                <svg class="w-4 h-4 text-sky-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.8 1.4 5.3 3.6 7-.2.9-.7 2.1-1.3 2.8-.2.3 0 .7.4.7 1.6 0 3.4-.6 4.6-1.3.9.2 1.8.3 2.7.3 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm-3 8.5c-.8 0-1.5-.7-1.5-1.5S8.2 7.5 9 7.5s1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm6 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm-3 5.5c-2.1 0-3.9-1.2-4.5-3h9c-.6 1.8-2.4 3-4.5 3z"/>
+                                </svg>
+                                <span>ניווט ב-Waze</span>
+                            </a>
+
+                            <!-- Google Maps Button -->
+                            <a href="https://maps.google.com/?q=%D7%A0%D7%97%D7%9C+%D7%9C%D7%95%D7%96+3+%D7%91%D7%99%D7%AA+%D7%A9%D7%9E%D7%A9" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="flex items-center justify-center gap-2 bg-white hover:bg-cream-200/70 text-espresso-800 border border-gold-400/60 rounded-xl py-2.5 px-3 text-sm font-semibold transition shadow-sm">
+                                <svg class="w-4 h-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                                    <line x1="9" y1="3" x2="9" y2="18"></line>
+                                    <line x1="15" y1="6" x2="15" y2="21"></line>
+                                </svg>
+                                <span>מפות Google</span>
+                            </a>
+
+                            <!-- Add to Calendar Button -->
+                            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%91%D7%A8+%D7%9E%D7%A6%D7%95%D7%95%D7%94+%D7%9C%D7%99%D7%A2%D7%A0%D7%A7%D7%99+%D7%A0%22%D7%99+-+%D7%9E%D7%A9%D7%A4%D7%97%D7%AA+%D7%A4%D7%A8%D7%95%D7%9D&dates=20261122T200000/20261122T233000&details=%D7%A9%D7%9E%D7%97%D7%AA+%D7%91%D7%A8+%D7%94%D7%9E%D7%A6%D7%95%D7%95%D7%94+%D7%9C%D7%99%D7%A2%D7%A0%D7%A7%D7%99+%D7%A0%22%D7%99.+%D7%A0%D7%A9%D7%9E%D7%97+%D7%9C%D7%A8%D7%90%D7%95%D7%AA%D7%9B%D7%9D%2C+%D7%9E%D7%A9%D7%A4%D7%97%D7%AA+%D7%A4%D7%A8%D7%95%D7%9D!&location=%D7%90%D7%95%D7%9C%D7%9D+%D7%A4%D7%A0%D7%99+%D7%A9%D7%9E%D7%95%D7%90%D7%9C%2C+%D7%A8%D7%97%27+%D7%A0%D7%97%D7%9C+%D7%9C%D7%95%D7%96+3%2C+%D7%A8%D7%9E%D7%AA+%D7%91%D7%99%D7%AA+%D7%A9%D7%9E%D7%A9+%D7%90%27" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="flex items-center justify-center gap-2 bg-white hover:bg-cream-200/70 text-espresso-800 border border-gold-400/60 rounded-xl py-2.5 px-3 text-sm font-semibold transition shadow-sm">
+                                <svg class="w-4 h-4 text-gold-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span>הוספה ליומן</span>
+                            </a>
+                        </div>
+
+                        <!-- Family Signature -->
+                        <div class="pt-3">
+                            <p class="font-serif text-lg sm:text-xl font-bold text-espresso-800">
+                                נשמח לראותכם,<br>
+                                <span class="text-gold-700">משפחת פרום</span>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LIVE COUNTDOWN TIMER -->
+                <section class="mt-8 sm:mt-10 text-center relative z-10 reveal">
+                    <p class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gold-700 mb-3">
+                        סופרים את הרגעים לשמחה
+                    </p>
+                    <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto" dir="ltr">
+                        <div class="bg-white/85 backdrop-blur-sm border border-gold-400/50 rounded-2xl py-3 px-2 shadow-sm">
+                            <div id="cd-days" class="font-serif text-2xl sm:text-3xl font-bold text-espresso-900">00</div>
+                            <div class="text-[11px] sm:text-xs font-medium text-espresso-600 mt-0.5">ימים</div>
+                        </div>
+                        <div class="bg-white/85 backdrop-blur-sm border border-gold-400/50 rounded-2xl py-3 px-2 shadow-sm">
+                            <div id="cd-hours" class="font-serif text-2xl sm:text-3xl font-bold text-espresso-900">00</div>
+                            <div class="text-[11px] sm:text-xs font-medium text-espresso-600 mt-0.5">שעות</div>
+                        </div>
+                        <div class="bg-white/85 backdrop-blur-sm border border-gold-400/50 rounded-2xl py-3 px-2 shadow-sm">
+                            <div id="cd-minutes" class="font-serif text-2xl sm:text-3xl font-bold text-espresso-900">00</div>
+                            <div class="text-[11px] sm:text-xs font-medium text-espresso-600 mt-0.5">דקות</div>
+                        </div>
+                        <div class="bg-white/85 backdrop-blur-sm border border-gold-400/50 rounded-2xl py-3 px-2 shadow-sm">
+                            <div id="cd-seconds" class="font-serif text-2xl sm:text-3xl font-bold text-gold-700">00</div>
+                            <div class="text-[11px] sm:text-xs font-medium text-espresso-600 mt-0.5">שניות</div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Subtle Footer -->
+    <footer class="mt-6 text-center text-xs text-espresso-600/70">
+        משפחת פרום • שמחת בר המצווה ליענקי נ״י • תשפ״ז
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // =========================================================================
+            // 1. CONFIGURATION: Google Apps Script Web App URL
+            // =========================================================================
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwABXKmQfkebOlPJ-7UYH_SZYk5KVSgsNa3hYuHu9qq4m6aRdOq-FRK_qWsXHDpzkNT/exec";
+
+            // =========================================================================
+            // 2. FLOATING GOLD DUST PARTICLES IN HERO
+            // =========================================================================
+            const particlesContainer = document.getElementById('particles-container');
+            if (particlesContainer) {
+                for (let i = 0; i < 18; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'gold-particle';
+                    const size = Math.random() * 5 + 3;
+                    dot.style.width = `${size}px`;
+                    dot.style.height = `${size}px`;
+                    dot.style.left = `${Math.random() * 100}%`;
+                    dot.style.top = `${Math.random() * 85 + 15}%`;
+                    dot.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                    dot.style.animationDelay = `${Math.random() * 4}s`;
+                    particlesContainer.appendChild(dot);
+                }
+            }
+
+            // =========================================================================
+            // 3. SCROLL REVEAL ANIMATION
+            // =========================================================================
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // =========================================================================
+            // 4. LIVE COUNTDOWN TIMER (Sunday, Nov 22, 2026 at 20:00 Israel Time)
+            // =========================================================================
+            const eventDate = new Date('2026-11-22T20:00:00+02:00').getTime();
+            const daysEl = document.getElementById('cd-days');
+            const hoursEl = document.getElementById('cd-hours');
+            const minutesEl = document.getElementById('cd-minutes');
+            const secondsEl = document.getElementById('cd-seconds');
+
+            function updateCountdown() {
+                const now = Date.now();
+                const diff = eventDate - now;
+
+                if (diff <= 0) {
+                    daysEl.textContent = '00';
+                    hoursEl.textContent = '00';
+                    minutesEl.textContent = '00';
+                    secondsEl.textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // =========================================================================
+            // 5. GUEST COUNT STEPPER & ATTENDANCE TOGGLE
+            // =========================================================================
+            let guestCount = 1;
+            const guestsDisplay = document.getElementById('guests-display');
+            const decreaseBtn = document.getElementById('decrease-guests');
+            const increaseBtn = document.getElementById('increase-guests');
+            const guestsWrapper = document.getElementById('guests-count-wrapper');
+            const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+
+            decreaseBtn.addEventListener('click', () => {
+                if (guestCount > 1) {
+                    guestCount--;
+                    guestsDisplay.textContent = guestCount;
+                }
+            });
+
+            increaseBtn.addEventListener('click', () => {
+                if (guestCount < 20) {
+                    guestCount++;
+                    guestsDisplay.textContent = guestCount;
+                }
+            });
+
+            attendanceRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'לצערי לא אוכל להגיע') {
+                        guestsWrapper.classList.add('hidden');
+                    } else {
+                        guestsWrapper.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // =========================================================================
+            // 6. SUBTLE GOLD CONFETTI CELEBRATION
+            // =========================================================================
+            function launchGoldConfetti() {
+                const canvas = document.getElementById('confetti-canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const colors = ['#C5A059', '#E5CE95', '#997B30', '#D4B672', '#F2E9D8'];
+                const pieces = Array.from({ length: 75 }, () => ({
+                    x: Math.random() * canvas.width,
+                    y: -20 - Math.random() * 150,
+                    w: Math.random() * 8 + 5,
+                    h: Math.random() * 5 + 3,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speedY: Math.random() * 3 + 2,
+                    speedX: (Math.random() - 0.5) * 2.5,
+                    rotation: Math.random() * 360,
+                    rotSpeed: (Math.random() - 0.5) * 8
+                }));
+
+                let frame = 0;
+                function animateConfetti() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    pieces.forEach(p => {
+                        p.y += p.speedY;
+                        p.x += p.speedX;
+                        p.rotation += p.rotSpeed;
+
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate((p.rotation * Math.PI) / 180);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                        ctx.restore();
+                    });
+
+                    frame++;
+                    if (frame < 160) {
+                        requestAnimationFrame(animateConfetti);
+                    } else {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                }
+                animateConfetti();
+            }
+
+            // =========================================================================
+            // 7. SILENT BACKGROUND RSVP SUBMISSION
+            // =========================================================================
+            const rsvpForm = document.getElementById('rsvp-form');
+            const formAlert = document.getElementById('form-alert');
+            const submitBtn = document.getElementById('submit-rsvp-btn');
+            const submitBtnContent = document.getElementById('submit-btn-content');
+            const submitBtnLoader = document.getElementById('submit-btn-loader');
+            const confirmationCard = document.getElementById('confirmation-card');
+            const confirmGuestName = document.getElementById('confirm-guest-name');
+            const confirmMessageText = document.getElementById('confirm-message-text');
+            const confirmSummaryBadge = document.getElementById('confirm-summary-badge');
+
+            function setLoadingState(isLoading) {
+                submitBtn.disabled = isLoading;
+                if (isLoading) {
+                    submitBtnContent.classList.add('hidden');
+                    submitBtnLoader.classList.remove('hidden');
+                } else {
+                    submitBtnContent.classList.remove('hidden');
+                    submitBtnLoader.classList.add('hidden');
+                }
+            }
+
+            rsvpForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                formAlert.classList.add('hidden');
+
+                const nameInput = document.getElementById('guest-name').value.trim();
+                if (!nameInput) {
+                    formAlert.textContent = 'נא להזין שם מלא כדי שנוכל לרשום את אישור ההגעה.';
+                    formAlert.classList.remove('hidden');
+                    document.getElementById('guest-name').focus();
+                    return;
+                }
+
+                const status = document.querySelector('input[name="attendance"]:checked').value;
+                const isAttending = status === 'מגיעים בשמחה!';
+
+                const payload = {
+                    timestamp: new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' }),
+                    name: nameInput,
+                    phone: "",
+                    status: status,
+                    guests: isAttending ? guestCount : 0,
+                    blessing: ""
+                };
+
+                setLoadingState(true);
+
+                try {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // Populate confirmation screen
+                    confirmGuestName.textContent = nameInput;
+                    if (isAttending) {
+                        confirmMessageText.textContent = 'אישור ההגעה נקלט בהצלחה, נשמח לראותכם בשמחתנו!';
+                        confirmSummaryBadge.textContent = `${status} • ${guestCount} משתתפים`;
+                        launchGoldConfetti();
+                    } else {
+                        confirmMessageText.textContent = 'תודה שעדכנתם אותנו! נשמח להיפגש בשמחות הבאות.';
+                        confirmSummaryBadge.textContent = status;
+                    }
+
+                    rsvpForm.classList.add('hidden');
+                    confirmationCard.classList.remove('hidden');
+                } catch (error) {
+                    console.error('RSVP submission error:', error);
+                    formAlert.textContent = 'אירעה שגיאה זמנית בשמירת הפרטים, אנא נסו שוב בעוד רגע.';
+                    formAlert.classList.remove('hidden');
+                } finally {
+                    setLoadingState(false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
